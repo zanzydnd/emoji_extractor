@@ -29,7 +29,6 @@ async def get_tone_of_rus_text(text) -> str:
     tokenizer = RegexTokenizer()
     model = FastTextSocialNetworkModel(tokenizer=tokenizer)
     result = model.predict(text, k=1)[0]
-    print(result)
     return max(result.items(), key=operator.itemgetter(1))[0]
 
 

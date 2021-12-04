@@ -17,8 +17,6 @@ async def start():
     for comment in comments:
         proceed_text, emojies = await rm_all_emojis_and_get_their_nums(comment.text)
 
-        print(proceed_text)
-        print(await get_tone_of_text(proceed_text))
         tone = await Emotion.filter(name=await get_tone_of_text(proceed_text)).first()
 
         comment.emoji = emojies
