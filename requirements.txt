@@ -1,0 +1,8 @@
+emoji
+python-dotenv
+psycopg2-binary
+dostoevsky
+nltk
+textblob
+tortoise-orm
+asyncpg
