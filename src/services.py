@@ -2,10 +2,13 @@ import operator
 from typing import Tuple
 from collections import defaultdict
 import emoji
+from profanity_filter import ProfanityFilter
 from textblob import TextBlob
 from dostoevsky.tokenization import RegexTokenizer
 from dostoevsky.models import FastTextSocialNetworkModel
 from nltk.sentiment import SentimentIntensityAnalyzer
+
+from profanity_helper import PymorphyProc
 
 
 async def get_language(text: str) -> str:
@@ -23,6 +26,16 @@ async def rm_all_emojis_and_get_their_nums(text) -> Tuple[str, dict]:
             return_text += symb
 
     return return_text, dict(emojies)
+
+
+async def does_contain_profanity(text) -> bool:
+    b = TextBlob(text)
+    lang = b.detect_language()
+    pf = ProfanityFilter(languages=['en', 'ru'])
+    if lang == 'en':
+        return pf.is_profane(text)
+    elif lang == 'rus':
+        return True if PymorphyProc.test(text) == 1 else False
 
 
 async def get_tone_of_rus_text(text) -> str:

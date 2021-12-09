@@ -15,11 +15,13 @@ class Comment(Model):
     emoji = fields.JSONField(null=True)
     is_done = fields.BooleanField()
     emotion_text_type_id = fields.IntField(null=True)
-    post_id_id = fields.IntField()
+    post_id = fields.IntField()
     comment_id = fields.CharField(max_length=50)
     commentator_login = fields.CharField(max_length=255)
     commentator_social_id = fields.CharField(max_length=255)
     text = fields.TextField()
+    created_at = fields.DatetimeField()
+    is_contain_profanity = fields.BooleanField()
 
     class Meta:
         table = "comment_emotion"

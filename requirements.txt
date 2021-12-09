@@ -6,3 +6,5 @@ nltk
 textblob
 tortoise-orm
 asyncpg
+pymorphy
+profanity_filter
