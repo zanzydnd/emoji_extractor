@@ -8,3 +8,5 @@ tortoise-orm
 asyncpg
 pymorphy
 profanity_filter
+googletrans2
+deep-translator
